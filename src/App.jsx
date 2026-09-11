@@ -442,6 +442,16 @@ export default function Portfolio() {
                 ติดต่อผม
               </a>
               <a
+                href="https://github.com/Thanawat56"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-md text-sm font-medium border"
+                style={{borderColor: border, color: textSecondary}}>
+                <GithubMark size={16} />
+                Github
+              </a>
+              <a
                 href="https://www.linkedin.com/in/thanawat-nalongwongwatthana-51b321436/"
                 target="_blank"
                 rel="noreferrer"

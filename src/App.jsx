@@ -5,7 +5,6 @@ import {
   Mail,
   Phone,
   Download,
-  ExternalLink,
   ChevronDown,
   Copy,
   Check,
@@ -24,15 +23,15 @@ const LinkedinMark = ({size = 18}) => (
 );
 
 /* ---------- theme tokens ---------- */
-const bg = "#0B1220";
-const surface = "#131B2E";
-const surfaceAlt = "#1A2338";
-const border = "rgba(255,255,255,0.08)";
-const textPrimary = "#E8ECF4";
-const textSecondary = "#8A93A6";
-const amber = "#F2A93B";
-const amberDark = "#241705";
-const teal = "#4FD1C5";
+const bg = "#EEF3F7";
+const surface = "#FFFFFF";
+const surfaceAlt = "#EEF3F7";
+const border = "rgba(15,31,52,0.12)";
+const textPrimary = "#14243A";
+const textSecondary = "#5A6A80";
+const amber = "#D88A16";
+const amberDark = "#281700";
+const teal = "#087F78";
 
 const FontStyles = () => (
   <style>{`
@@ -50,21 +49,24 @@ const FontStyles = () => (
 
 /* ---------- data ---------- */
 const navLinks = [
+  {label: "เกี่ยวกับฉัน", href: "#about"},
   {label: "ทักษะ", href: "#skills"},
   {label: "ผลงาน", href: "#projects"},
+  {label: "การศึกษา", href: "#education"},
+  {label: "Vibe Coding", href: "#vibe-coding"},
   {label: "ติดต่อ", href: "#contact"},
 ];
 
 const skillGroups = [
   {
-    title: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "JavaScript"],
+    title: "Programming",
+    items: ["HTML", "CSS", "JavaScript", "Python", "SQL"],
   },
-  {title: "Backend", items: ["Node.js", "Express", "Python", "FastAPI"]},
-  {title: "Database", items: ["SQL", "MongoDB", "Supabase"]},
+  {title: "Frameworks & API", items: ["REST API", "Entity Framework Core", "n8n"]},
+  {title: "Database & AI", items: ["MySQL", "AI", "RAG"]},
   {
-    title: "Tools / DevOps",
-    items: ["Git", "Docker", "Postman", "GitHub Actions"],
+    title: "Tools & Workflow",
+    items: ["Git", "GitHub", "Teamwork", "Problem Solving"],
   },
 ];
 
@@ -73,6 +75,9 @@ const projects = [
     id: "smart-weather",
     title: "Smart-Weather-Report",
     tagline: "ระบบรายงานสภาพอากาศและให้คำแนะนำด้านการเกษตรด้วย n8n และ AI",
+    problem: "เกษตรกรต้องใช้เวลารวบรวมข้อมูลสภาพอากาศและวิเคราะห์ผลกระทบต่อการเพาะปลูก",
+    solution: "สร้าง workflow อัตโนมัติที่ดึงข้อมูลอากาศ วิเคราะห์ด้วย AI และส่งคำแนะนำผ่าน Discord",
+    role: "ออกแบบ workflow เชื่อม API, Webhook, AI และ Google Sheets พร้อมทดสอบการทำงาน",
     features: [
       "ดึงข้อมูลสภาพอากาศแบบเรียลไทม์ผ่าน OpenWeather API",
       "ใช้ n8n เชื่อมต่อ Webhook, API และ AI เพื่อประมวลผลข้อมูลอัตโนมัติ",
@@ -86,24 +91,30 @@ const projects = [
       "Google Sheets",
       "Discord",
     ],
-    repoUrl: "https://github.com/Thanawat56/Smart-Weather-Report",
+    repoUrl: "https://github.com/Thanawat56/Smart-Weather-Report-main.git",
   },
   {
     id: "doclibrary",
     title: "DocLibrary — คลังหนังสือ",
     tagline: "เว็บแอปพลิเคชันสำหรับจัดเก็บ ค้นหา และจัดการข้อมูลหนังสือ",
+    problem: "การจัดเก็บข้อมูลหนังสือแบบเดิมทำให้ค้นหาและแก้ไขรายละเอียดได้ไม่สะดวก",
+    solution: "พัฒนาเว็บแอปสำหรับจัดการข้อมูลหนังสือ ค้นหา และเรียกดูรายละเอียดจากคลังข้อมูล",
+    role: "พัฒนา frontend ด้วย React และออกแบบหน้าจอสำหรับเพิ่ม ค้นหา และจัดการหนังสือ",
     features: [
       "ระบบจัดการข้อมูลหนังสือและรายละเอียดของหนังสือ",
       "ค้นหาและเรียกดูหนังสือจากคลังข้อมูลได้อย่างสะดวก",
       "ออกแบบหน้าเว็บให้ใช้งานง่ายสำหรับการจัดการและค้นหาหนังสือ",
     ],
     stack: ["React", "JavaScript", "HTML", "CSS"],
-    repoUrl: "https://github.com/",
+    repoUrl: "https://github.com/Thanawat56/DocLibrary-ClientServer-Master-Thanawat.git",
   },
   {
     id: "smart-plan-planting",
     title: "SMART-PLAN-PLANTING — Agricultural Chatbot",
     tagline: "แชทบอทให้ข้อมูลและคำแนะนำด้านการเกษตรด้วย AI และระบบ RAG",
+    problem: "ผู้ใช้งานต้องการคำแนะนำด้านการเพาะปลูกที่อ้างอิงจากข้อมูลเฉพาะทางและค้นหาได้รวดเร็ว",
+    solution: "สร้างแชทบอทที่ค้นข้อมูลจาก Knowledge Base ด้วย RAG ก่อนให้ AI สร้างคำตอบ",
+    role: "เตรียมเอกสาร สร้างระบบค้นหาด้วย FAISS และเชื่อมขั้นตอน RAG กับ OpenAI",
     features: [
       "แชทบอทตอบคำถามเกี่ยวกับการเพาะปลูกและข้อมูลด้านการเกษตร",
       "ใช้ระบบ RAG เพื่อค้นหาข้อมูลจาก Knowledge Base ก่อนสร้างคำตอบ",
@@ -111,6 +122,45 @@ const projects = [
     ],
     stack: ["Python", "Google Colab", "RAG", "AI", "FAISS", "OpenAI"],
     repoUrl: "https://github.com/Thanawat56/SMART-PLAN-PLANTING",
+  },
+];
+
+const vibeCodingSteps = [
+  {
+    number: "01",
+    title: "เริ่มจากโจทย์และแบ่งงาน",
+    tools: "VS Code + Copilot Chat",
+    prompt:
+      "ช่วยวิเคราะห์โจทย์นี้ แบ่งเป็นงานย่อยที่ทดสอบได้ และบอกไฟล์ที่ควรแก้ก่อนเริ่มเขียนโค้ด",
+    detail:
+      "ผมให้ AI ช่วยทำความเข้าใจ requirement และหา code path ที่เกี่ยวข้องก่อนลงมือ เพื่อให้แต่ละ prompt มีขอบเขตชัดและตรวจผลได้",
+  },
+  {
+    number: "02",
+    title: "สร้างทีละส่วนและให้บริบท",
+    tools: "React + Vite + Tailwind CSS",
+    prompt:
+      "แก้เฉพาะ component นี้ รักษา style เดิม เพิ่ม responsive layout และอย่าเปลี่ยน public API ที่มีอยู่",
+    detail:
+      "ผมแนบไฟล์หรือ symbol ที่เกี่ยวข้อง ระบุข้อจำกัด และขอให้แก้แบบเล็กที่สุด ทำให้ review diff ได้ง่ายและลดผลกระทบกับส่วนอื่น",
+  },
+  {
+    number: "03",
+    title: "ตรวจผลและแก้จากหลักฐาน",
+    tools: "npm run build + diagnostics + browser preview",
+    prompt:
+      "หลังแก้แล้ว ช่วยตรวจ compile error, responsive behavior และปุ่ม/ลิงก์ที่กดได้จริง พร้อมสรุปสิ่งที่ยังเสี่ยง",
+    detail:
+      "ปัญหาที่เจอคือ Tailwind ไม่ถูกโหลดและปุ่ม Architecture มีลิงก์ซ้อนอยู่ ผมใช้ build, diagnostics และ browser smoke check แยกสาเหตุ ก่อนแก้ที่ต้นเหตุ",
+  },
+  {
+    number: "04",
+    title: "รักษาความปลอดภัยก่อนส่งงาน",
+    tools: "Environment variables + .gitignore",
+    prompt:
+      "ตรวจโค้ดว่ามี API key, password หรือ secret ฝังอยู่หรือไม่ และแนะนำวิธีเรียกผ่าน environment variable",
+    detail:
+      "ผมไม่ใส่ API Key หรือ Password ลงใน repository ใช้ไฟล์ .env.local ที่ไม่ commit และให้ backend หรือ server-side code เป็นผู้เรียก API ที่ต้องใช้ secret",
   },
 ];
 
@@ -179,25 +229,42 @@ const ProjectCard = ({project}) => {
           {project.tagline}
         </p>
 
-        <ul className="mt-4 space-y-2">
-          {project.features.map((f) => (
-            <li
-              key={f}
-              className="flex gap-2 text-sm"
-              style={{color: textSecondary}}>
-              <span
-                className="shrink-0 mt-2 w-1 h-1 rounded-full"
-                style={{background: amber}}
-              />
-              <span style={{lineHeight: 1.7}}>{f}</span>
-            </li>
+        <div className="mt-5 space-y-4">
+          {[
+            ["Problem", project.problem],
+            ["Solution", project.solution],
+            ["My Role", project.role],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <p className="text-xs font-semibold uppercase tracking-wide" style={{color: amber}}>
+                {label}
+              </p>
+              <p className="mt-1 text-sm" style={{color: textSecondary, lineHeight: 1.7}}>
+                {value}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <p className="mt-5 text-xs font-semibold uppercase tracking-wide" style={{color: amber}}>
+          Tech
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
           {project.stack.map((s) => (
             <Badge key={s}>{s}</Badge>
           ))}
+        </div>
+
+        <div className="mt-6">
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium border"
+            style={{borderColor: border, color: textPrimary}}>
+            <GithubMark size={14} />
+            Demo
+          </a>
         </div>
 
         <button
@@ -205,17 +272,12 @@ const ProjectCard = ({project}) => {
           className="mt-5 flex items-center gap-1.5 text-sm w-full justify-between py-2 border-t"
           style={{color: teal, borderColor: border}}
           aria-expanded={open}>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md text-sm font-medium border"
-              style={{borderColor: border, color: textPrimary}}>
-              <GithubMark size={14} />
-              Repo
-            </a>
-          </div>
+          <span>ดูรายละเอียดการทำงาน</span>
+          <ChevronDown
+            size={16}
+            className="transition-transform"
+            style={{transform: open ? "rotate(180deg)" : "rotate(0deg)"}}
+          />
         </button>
       </div>
 
@@ -228,7 +290,7 @@ const ProjectCard = ({project}) => {
               color: textSecondary,
               lineHeight: 1.8,
             }}>
-            {project.architecture}
+            {project.architecture || project.features.join(" ")}
           </div>
         </div>
       )}
@@ -264,13 +326,17 @@ export default function Portfolio() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
         style={{
-          background: scrolled ? "rgba(11,18,32,0.88)" : "transparent",
+          background: scrolled ? "rgba(238,243,247,0.92)" : "transparent",
           borderBottom: scrolled
             ? `1px solid ${border}`
             : "1px solid transparent",
           backdropFilter: scrolled ? "blur(10px)" : "none",
         }}>
         <div className="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+          <a href="#top" className="font-display text-lg" style={{color: textPrimary}}>
+            Thanawat.dev
+          </a>
+
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((l) => (
               <a
@@ -288,12 +354,12 @@ export default function Portfolio() {
               </a>
             ))}
             <a
-              href="/resume.pdf"
-              download
+              href="/CV%20Thanawat.jpg"
+              download="CV Thanawat.jpg"
               className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-md font-medium transition-opacity hover:opacity-90"
               style={{background: amber, color: amberDark}}>
               <Download size={14} />
-              Download CV
+              ขอ Resume
             </a>
           </nav>
 
@@ -320,12 +386,13 @@ export default function Portfolio() {
               </a>
             ))}
             <a
-              href="/resume.pdf"
-              download
+              href="/CV%20Thanawat.jpg"
+              download="CV Thanawat.jpg"
+              onClick={() => setMenuOpen(false)}
               className="mt-4 inline-flex items-center justify-center gap-2 text-sm px-4 py-3 rounded-md font-medium"
               style={{background: amber, color: amberDark}}>
               <Download size={14} />
-              Download CV
+              ขอ Resume
             </a>
           </nav>
         )}
@@ -335,64 +402,89 @@ export default function Portfolio() {
       <section
         id="top"
         className="hero-section max-w-5xl mx-auto px-5 sm:px-8 pt-32 pb-16 sm:pt-44 sm:pb-20">
-        <p className="eyebrow mb-6" style={{color: teal}}>
-          กำลังหางาน Junior Full-Stack Developer
-        </p>
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_250px]">
+          <div>
+            <p className="eyebrow mb-6" style={{color: teal}}>
+              ฝึกงานตำแหน่ง Full-Stack Developer
+            </p>
 
-        <h1
-          className="font-display leading-tight"
-          style={{fontSize: "clamp(2.2rem, 7vw, 3.8rem)"}}>
-          สร้างระบบที่ใช้งานได้จริง
-          <br />
-          ตั้งแต่หน้าบ้านถึงฐานข้อมูล
-          <span className="cursor-blink" style={{color: amber}}>
-            _
-          </span>
-        </h1>
+            <h1
+              className="font-display leading-tight"
+              style={{fontSize: "clamp(2.2rem, 7vw, 3.8rem)"}}>
+              ธนวัฒน์ ณรงค์วงศ์วัฒนา
+              <br />
+              <span style={{color: teal}}>Full-Stack Developer</span>
+              <span className="cursor-blink" style={{color: amber}}>
+                _
+              </span>
+            </h1>
 
-        <p
-          className="mt-6 max-w-xl text-base sm:text-lg"
-          style={{color: textSecondary, lineHeight: 1.75}}>
-          นักศึกษาวิทยาการคอมพิวเตอร์ที่เน้นเขียนโค้ดสะอาดและแก้ปัญหาอย่างเป็นระบบ
-          มีประสบการณ์ทำโปรเจกต์ Full-Stack ตั้งแต่ออกแบบฐานข้อมูล เขียน API
-          ไปจนถึงดีพลอยใช้งานจริง
-        </p>
+            <p
+              className="mt-6 max-w-xl text-base sm:text-lg"
+              style={{color: textSecondary, lineHeight: 1.75}}>
+              นักศึกษาชั้นปีที่ 4 สาขาวิชาการคอมพิวเตอร์ มหาวิทยาลัยศรีปทุม
+              มีพื้นฐานการเขียนโปรแกรม ออกแบบฐานข้อมูล และพัฒนาเว็บ/แอปพลิเคชัน
+              พร้อมเรียนรู้เทคโนโลยีใหม่และทำงานเป็นทีม
+            </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-medium transition-transform hover:-translate-y-0.5"
-            style={{background: amber, color: amberDark}}>
-            View Projects
-            <ArrowRight size={16} />
-          </a>
-          {[
-            {
-              Icon: GithubMark,
-              label: "GitHub",
-              href: "https://github.com/Thanawat56",
-            },
-            {
-              Icon: LinkedinMark,
-              label: "LinkedIn",
-              href: "https://www.linkedin.com/in/thanawat-nalongwongwatthana-51b321436/",
-            },
-          ].map(({Icon, label, href}) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noreferrer" : undefined}
-              aria-label={label}
-              className="p-3 rounded-md border transition-colors"
-              style={{borderColor: border, color: textSecondary}}
-              onMouseEnter={(e) => (e.currentTarget.style.color = textPrimary)}
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = textSecondary)
-              }>
-              <Icon size={18} />
-            </a>
-          ))}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-medium transition-transform hover:-translate-y-0.5"
+                style={{background: amber, color: amberDark}}>
+                ดูผลงาน
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-medium border"
+                style={{borderColor: border, color: textPrimary}}>
+                ติดต่อผม
+              </a>
+              <a
+                href="https://www.linkedin.com/in/thanawat-nalongwongwatthana-51b321436/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-md text-sm font-medium border"
+                style={{borderColor: border, color: textSecondary}}>
+                <LinkedinMark size={16} />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-62.5">
+            <div className="absolute -inset-3 rounded-2xl border" style={{borderColor: "rgba(8,127,120,0.2)"}} />
+            <img
+              src="/CV%20Thanawat.jpg"
+              alt="ธนวัฒน์ ณรงค์วงศ์วัฒนา"
+              className="relative aspect-4/5 w-full rounded-xl object-cover object-top shadow-xl"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section
+        id="about"
+        className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
+        style={{borderColor: border}}>
+        <p className="section-kicker">01 / about me</p>
+        <h2 className="font-display text-2xl sm:text-3xl">เกี่ยวกับฉัน</h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+          <p className="text-base" style={{color: textSecondary, lineHeight: 1.9}}>
+            นักศึกษาชั้นปีที่ 4 สาขาวิชาการคอมพิวเตอร์ มหาวิทยาลัยศรีปทุม
+            มีพื้นฐานการเขียนโปรแกรม การออกแบบฐานข้อมูล และการพัฒนาเว็บ/แอปพลิเคชัน
+            ผ่านการทำโปรเจกต์ระบบคลังหนังสือและแอปบันทึกการออกกำลังกาย
+            สนใจตำแหน่ง Full-Stack Developer หรือตำแหน่งใกล้เคียง
+          </p>
+          <div className="rounded-xl border p-5" style={{background: surface, borderColor: border}}>
+            <p className="text-sm font-medium" style={{color: teal}}>จุดแข็งในการทำงาน</p>
+            <p className="mt-3 text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+              Teamwork · Leadership · Problem Solving · Communication · Time Management · Adaptability
+            </p>
+          </div>
         </div>
       </section>
 
@@ -401,7 +493,7 @@ export default function Portfolio() {
         id="skills"
         className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
         style={{borderColor: border}}>
-        <p className="section-kicker">01 / toolkit</p>
+        <p className="section-kicker">02 / toolkit</p>
         <h2 className="font-display text-2xl sm:text-3xl">ทักษะทางเทคนิค</h2>
         <div className="mt-8 grid sm:grid-cols-2 gap-5">
           {skillGroups.map((group) => (
@@ -438,7 +530,7 @@ export default function Portfolio() {
         id="projects"
         className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
         style={{borderColor: border}}>
-        <p className="section-kicker">02 / selected work</p>
+        <p className="section-kicker">03 / selected work</p>
         <h2 className="font-display text-2xl sm:text-3xl">ผลงานเด่น</h2>
         <p className="mt-2 text-sm" style={{color: textSecondary}}>
           3 โปรเจกต์ Full-Stack ที่แสดงทักษะตั้งแต่ frontend, backend
@@ -451,12 +543,112 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Education */}
+      <section
+        id="education"
+        className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
+        style={{borderColor: border}}>
+        <p className="section-kicker">04 / education</p>
+        <h2 className="font-display text-2xl sm:text-3xl">การศึกษาและภาษา</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <article className="rounded-xl border p-6" style={{background: surface, borderColor: border}}>
+            <p className="text-sm" style={{color: amber}}>พ.ศ. 2566 - ปัจจุบัน</p>
+            <h3 className="mt-3 font-display text-xl" style={{color: textPrimary}}>
+              มหาวิทยาลัยศรีปทุม
+            </h3>
+            <p className="mt-2 text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+              คณะเทคโนโลยีสารสนเทศ · สาขาวิชาการคอมพิวเตอร์
+              <br />ระดับปริญญาตรี · เกรดเฉลี่ยสะสม 3.43
+            </p>
+            <p className="mt-4 text-xs font-medium" style={{color: teal}}>รายวิชาที่เกี่ยวข้อง</p>
+            <p className="mt-2 text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+              การพัฒนาเว็บและซอฟต์แวร์ · ระบบฐานข้อมูล · โครงสร้างข้อมูลและอัลกอริทึม · ปัญญาประดิษฐ์ · การเชื่อมต่อ Frontend และ Backend
+            </p>
+          </article>
+          <article className="rounded-xl border p-6" style={{background: surface, borderColor: border}}>
+            <p className="text-sm font-medium" style={{color: teal}}>ทักษะภาษา</p>
+            <div className="mt-5 space-y-4">
+              <div>
+                <div className="flex justify-between text-sm" style={{color: textPrimary}}>
+                  <span>ภาษาไทย</span><span style={{color: textSecondary}}>ดีเยี่ยม</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full" style={{background: surfaceAlt}}>
+                  <div className="h-2 w-full rounded-full" style={{background: teal}} />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-sm" style={{color: textPrimary}}>
+                  <span>ภาษาอังกฤษ</span><span style={{color: textSecondary}}>ดี</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full" style={{background: surfaceAlt}}>
+                  <div className="h-2 w-3/4 rounded-full" style={{background: amber}} />
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* Vibe Coding process */}
+      <section
+        id="vibe-coding"
+        className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
+        style={{borderColor: border}}>
+        <p className="section-kicker">05 / working with AI</p>
+        <h2 className="font-display text-2xl sm:text-3xl">
+          กระบวนการ Vibe Coding ของผม
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+          ใช้ AI เป็นคู่คิดเพื่อสำรวจ ออกแบบ และตรวจงาน โดยยังเป็นคนตัดสินใจ ตรวจสอบ และรับผิดชอบคุณภาพของโค้ดทุกขั้นตอน
+        </p>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {vibeCodingSteps.map((step) => (
+            <article
+              key={step.number}
+              className="rounded-xl border p-5"
+              style={{background: surface, borderColor: border}}>
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-mono text-sm" style={{color: amber}}>
+                  {step.number}
+                </span>
+                <span className="text-right text-xs" style={{color: teal}}>
+                  {step.tools}
+                </span>
+              </div>
+              <h3 className="mt-4 font-display text-xl" style={{color: textPrimary}}>
+                {step.title}
+              </h3>
+              <div
+                className="mt-4 rounded-lg border p-3 text-xs"
+                style={{background: surfaceAlt, borderColor: border, color: teal, lineHeight: 1.7}}>
+                “{step.prompt}”
+              </div>
+              <p className="mt-4 text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+                {step.detail}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div
+          className="mt-5 rounded-xl border p-5"
+          style={{background: "rgba(242,169,59,0.08)", borderColor: "rgba(242,169,59,0.25)"}}>
+          <h3 className="text-sm font-semibold" style={{color: amber}}>
+            Non-negotiable: ความปลอดภัยและคุณภาพ
+          </h3>
+          <p className="mt-2 text-sm" style={{color: textSecondary, lineHeight: 1.8}}>
+            รองรับ Desktop, Tablet และ Mobile ด้วย responsive layout, ตรวจปุ่มและลิงก์ทุกจุดก่อนส่งงาน, แก้ Critical Error จากหลักฐาน และห้ามฝัง API Key หรือ Password ลงใน Code Repository
+          </p>
+        </div>
+      </section>
+
       {/* Contact / Footer */}
       <section
         id="contact"
         className="max-w-5xl mx-auto px-5 sm:px-8 py-16 border-t"
         style={{borderColor: border}}>
-        <p className="section-kicker">03 / say hello</p>
+        <p className="section-kicker">06 / say hello</p>
         <h2 className="font-display text-2xl sm:text-3xl">ติดต่อ</h2>
         <p className="mt-2 text-sm" style={{color: textSecondary}}>
           สนใจร่วมงานหรือพูดคุยเพิ่มเติม ติดต่อได้ทุกช่องทางด้านล่าง
@@ -464,58 +656,16 @@ export default function Portfolio() {
 
         <div className="mt-8 grid md:grid-cols-2 gap-8">
           <div className="space-y-3">
-            <CopyField label="Email" value="nat.dev@example.com" Icon={Mail} />
-            <CopyField label="Phone" value="+66 80 000 0000" Icon={Phone} />
+            <CopyField label="Email" value="dogop7@gmail.com" Icon={Mail} />
+            <CopyField label="Phone" value="063-218-8850" Icon={Phone} />
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <input
-              required
-              type="text"
-              placeholder="ชื่อของคุณ"
-              className="w-full px-4 py-3 rounded-lg text-sm outline-none border"
-              style={{
-                background: surfaceAlt,
-                borderColor: border,
-                color: textPrimary,
-              }}
-            />
-            <input
-              required
-              type="email"
-              placeholder="อีเมลของคุณ"
-              className="w-full px-4 py-3 rounded-lg text-sm outline-none border"
-              style={{
-                background: surfaceAlt,
-                borderColor: border,
-                color: textPrimary,
-              }}
-            />
-            <textarea
-              required
-              rows={3}
-              placeholder="ข้อความ"
-              className="w-full px-4 py-3 rounded-lg text-sm outline-none border resize-none"
-              style={{
-                background: surfaceAlt,
-                borderColor: border,
-                color: textPrimary,
-              }}
-            />
-            <button
-              type="submit"
-              className="w-full px-4 py-3 rounded-md text-sm font-medium transition-opacity hover:opacity-90"
-              style={{background: amber, color: amberDark}}>
-              {formSent ? "ส่งข้อความแล้ว" : "ส่งข้อความ"}
-            </button>
-          </form>
         </div>
       </section>
 
       <footer
         className="border-t py-8 text-center text-xs"
         style={{borderColor: border, color: textSecondary}}>
-        © {new Date().getFullYear()} ณัฐ.dev — Built with React & Tailwind CSS
+        © {new Date().getFullYear()} Thanawat — Built with React & Tailwind CSS
       </footer>
     </div>
   );

@@ -3,8 +3,8 @@
 
 :root {
 	font-family: 'Inter', sans-serif;
-	color-scheme: dark;
-	background: #0b1220;
+	color-scheme: light;
+	background: #eef3f7;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 }
@@ -21,9 +21,10 @@ body {
 	margin: 0;
 	min-width: 320px;
 	background:
-		radial-gradient(circle at 78% 8%, rgba(79, 209, 197, 0.1), transparent 25rem),
-		radial-gradient(circle at 8% 40%, rgba(242, 169, 59, 0.08), transparent 23rem),
-		#0b1220;
+		linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 26rem),
+		radial-gradient(circle at 78% 8%, rgba(8, 127, 120, 0.13), transparent 25rem),
+		radial-gradient(circle at 8% 40%, rgba(216, 138, 22, 0.12), transparent 23rem),
+		#eef3f7;
 }
 
 button,
@@ -48,7 +49,7 @@ textarea:focus-visible {
 
 ::selection {
 	background: rgba(242, 169, 59, 0.32);
-	color: #fff7e8;
+	color: #281700;
 }
 
 .site-shell {
@@ -57,16 +58,47 @@ textarea:focus-visible {
 	overflow: hidden;
 }
 
+.site-shell::after {
+	position: absolute;
+	top: 18rem;
+	right: -12rem;
+	width: 28rem;
+	height: 28rem;
+	border: 1px solid rgba(216, 138, 22, 0.12);
+	border-radius: 50%;
+	box-shadow: 0 0 0 2rem rgba(216, 138, 22, 0.025), 0 0 0 4rem rgba(216, 138, 22, 0.02);
+	content: '';
+	pointer-events: none;
+}
+
 .site-shell::before {
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+	background-image: linear-gradient(rgba(20, 36, 58, 0.06) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(20, 36, 58, 0.06) 1px, transparent 1px);
 	background-size: 52px 52px;
 	content: '';
-	mask-image: linear-gradient(to bottom, black, transparent 78%);
+	mask-image: linear-gradient(to bottom, black, transparent 88%);
 	pointer-events: none;
+}
+
+.rounded-xl.border {
+	box-shadow: 0 12px 30px rgba(20, 36, 58, 0.06), 0 2px 6px rgba(20, 36, 58, 0.04);
+}
+
+section.border-t {
+	position: relative;
+}
+
+section.border-t::before {
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: 3rem;
+	height: 2px;
+	background: #d88a16;
+	content: '';
 }
 
 .hero-section {
@@ -79,9 +111,9 @@ textarea:focus-visible {
 	right: 3rem;
 	width: 9rem;
 	height: 9rem;
-	border: 1px solid rgba(79, 209, 197, 0.2);
+	border: 1px solid rgba(8, 127, 120, 0.2);
 	border-radius: 50%;
-	box-shadow: 0 0 0 1.5rem rgba(79, 209, 197, 0.025), 0 0 0 3rem rgba(79, 209, 197, 0.018);
+	box-shadow: 0 0 0 1.5rem rgba(8, 127, 120, 0.035), 0 0 0 3rem rgba(8, 127, 120, 0.02);
 	content: '';
 	pointer-events: none;
 }
@@ -91,9 +123,9 @@ textarea:focus-visible {
 	align-items: center;
 	gap: 0.55rem;
 	padding: 0.45rem 0.75rem;
-	border: 1px solid rgba(79, 209, 197, 0.25);
+	border: 1px solid rgba(8, 127, 120, 0.25);
 	border-radius: 999px;
-	background: rgba(79, 209, 197, 0.07);
+	background: rgba(8, 127, 120, 0.07);
 	font-family: 'DM Mono', monospace;
 	font-size: 0.72rem;
 	letter-spacing: 0.02em;
@@ -103,14 +135,14 @@ textarea:focus-visible {
 	width: 0.4rem;
 	height: 0.4rem;
 	border-radius: 50%;
-	background: #4fd1c5;
-	box-shadow: 0 0 0 4px rgba(79, 209, 197, 0.12);
+	background: #087f78;
+	box-shadow: 0 0 0 4px rgba(8, 127, 120, 0.12);
 	content: '';
 }
 
 .section-kicker {
 	margin-bottom: 0.5rem;
-	color: #f2a93b;
+	color: #b86e08;
 	font-family: 'DM Mono', monospace;
 	font-size: 0.7rem;
 	letter-spacing: 0.12em;
@@ -118,6 +150,13 @@ textarea:focus-visible {
 }
 
 @media (max-width: 640px) {
+	.site-shell::after {
+		top: 30rem;
+		right: -18rem;
+		width: 24rem;
+		height: 24rem;
+	}
+
 	.hero-section::after {
 		top: 6rem;
 		right: -4rem;

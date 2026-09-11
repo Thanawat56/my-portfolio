@@ -9,6 +9,10 @@ import {
   Copy,
   Check,
   ArrowRight,
+  Code2,
+  Server,
+  Database,
+  Wrench,
 } from "lucide-react";
 
 const GithubMark = ({size = 18}) => (
@@ -60,12 +64,14 @@ const navLinks = [
 const skillGroups = [
   {
     title: "Programming",
+    icon: Code2,
     items: ["HTML", "CSS", "JavaScript", "Python", "SQL"],
   },
-  {title: "Frameworks & API", items: ["REST API", "Entity Framework Core", "n8n"]},
-  {title: "Database & AI", items: ["MySQL", "AI", "RAG"]},
+  {title: "Frameworks & API", icon: Server, items: ["REST API", "Entity Framework Core", "n8n"]},
+  {title: "Database & AI", icon: Database, items: ["MySQL", "AI", "RAG"]},
   {
     title: "Tools & Workflow",
+    icon: Wrench,
     items: ["Git", "GitHub", "Teamwork", "Problem Solving"],
   },
 ];
@@ -302,7 +308,6 @@ const ProjectCard = ({project}) => {
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [formSent, setFormSent] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -310,11 +315,6 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormSent(true);
-    setTimeout(() => setFormSent(false), 3000);
-  };
 
   return (
     <div
@@ -499,18 +499,23 @@ export default function Portfolio() {
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="rounded-xl border p-5"
+              className="group rounded-xl border p-5 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               style={{background: surface, borderColor: border}}>
-              <h3
-                className="text-sm font-medium mb-3"
-                style={{color: textSecondary}}>
-                {group.title}
-              </h3>
+              <div className="mb-4 flex items-center gap-3">
+                <span
+                  className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300 group-hover:bg-teal-700 group-hover:text-white"
+                  style={{background: "rgba(8,127,120,0.1)", color: teal}}>
+                  <group.icon size={19} strokeWidth={1.8} />
+                </span>
+                <h3 className="text-sm font-medium" style={{color: textSecondary}}>
+                  {group.title}
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="text-sm px-3 py-1.5 rounded-md"
+                    className="text-sm px-3 py-1.5 rounded-md transition duration-200 hover:-translate-y-0.5 hover:border-teal-600 hover:text-teal-700"
                     style={{
                       background: surfaceAlt,
                       color: textPrimary,
